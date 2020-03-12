@@ -1001,6 +1001,9 @@
 #ifndef SUICIDE_PIN_INVERTING
   #define SUICIDE_PIN_INVERTING false
 #endif
+#ifndef KILL_PIN_INVERTING
+  #define KILL_PIN_INVERTING false
+#endif
 
 #ifndef NUM_SERVO_PLUGS
   #define NUM_SERVO_PLUGS 4

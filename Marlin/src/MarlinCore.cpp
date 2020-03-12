@@ -224,7 +224,8 @@ millis_t max_inactive_time, // = 0
 
 void setup_killpin() {
   #if HAS_KILL
-    SET_INPUT_PULLUP(KILL_PIN);
+    if (!KILL_PIN_INVERTING) SET_INPUT_PULLUP(KILL_PIN);
+    else SET_INPUT(KILL_PIN);
   #endif
 }
 
@@ -544,9 +545,9 @@ inline void manage_inactivity(const bool ignore_stepper_queue=false) {
     // -------------------------------------------------------------------------------
     static int killCount = 0;   // make the inactivity button a bit less responsive
     const int KILL_DELAY = 750;
-    if (!READ(KILL_PIN))
+    if (!READ(KILL_PIN) && !KILL_PIN_INVERTING)
       killCount++;
-    else if (killCount > 0)
+    else if (READ(KILL_PIN) && KILL_PIN_INVERTING)
       killCount--;
 
     // Exceeded threshold and we can confirm that it was not accidental
