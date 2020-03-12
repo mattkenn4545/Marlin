@@ -43,8 +43,8 @@
 //
 #define X_STOP_PIN        PA15
 #define Y_STOP_PIN        PA12
-#define Z_MIN_PIN         PA11
-#define Z_MAX_PIN         PC4
+#define Z_MIN_PIN         PE6 // Orig, PC4 BLTouch
+#define Z_MAX_PIN         PA11
 
 #ifndef FIL_RUNOUT_PIN
   #define FIL_RUNOUT_PIN   PA4   // MT_DET
@@ -61,17 +61,17 @@
 #define Y_STEP_PIN         PE0
 #define Y_DIR_PIN          PB9
 
-#define Z_ENABLE_PIN       PB8
-#define Z_STEP_PIN         PB5
-#define Z_DIR_PIN          PB4
+#define Z_ENABLE_PIN       PA3
+#define Z_STEP_PIN         PA6
+#define Z_DIR_PIN          PA1
 
 #define E0_ENABLE_PIN      PB3
 #define E0_STEP_PIN        PD6
 #define E0_DIR_PIN         PD3
 
-#define E1_ENABLE_PIN      PA3
-#define E1_STEP_PIN        PA6
-#define E1_DIR_PIN         PA1
+#define E1_ENABLE_PIN      PB8
+#define E1_STEP_PIN        PB5
+#define E1_DIR_PIN         PB4
 
 //
 // Temperature Sensors
@@ -123,7 +123,7 @@
   #define FSMC_CS_PIN        PD7    // NE4
   #define FSMC_RS_PIN        PD11   // A0
 
-  #define LCD_RESET_PIN      PC6    // FSMC_RST
+  //#define LCD_RESET_PIN      PC6    // FSMC_RST
   #define NO_LCD_REINIT             // Suppress LCD re-initialization
 
   #define LCD_BACKLIGHT_PIN  PD13
@@ -135,3 +135,13 @@
     #define TOUCH_MOSI_PIN   PB15 // SPI2_MOSI
   #endif
 #endif
+
+//#undef PS_ON_PIN
+//#define PS_ON_PIN          PB2   // PA3 PW_OFF
+#undef LED_PIN       //  PS_ON_PIN
+#define SUICIDE_PIN PB2
+
+#define SERVO0_PIN PA8 // BLTouch
+
+#define KILL_PIN PA2
+#define KILL_PIN_INVERTING true
